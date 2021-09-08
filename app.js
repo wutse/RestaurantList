@@ -22,7 +22,6 @@ app.get('/restaurants/:id', (req, res) => {
   res.render('show', { restaurant: result });
 });
 
-
 app.get('/search', (req, res) => {
   let results = restaurantList.results.filter(r => (r.name + r.category).toUpperCase().includes(req.query.keyword.toUpperCase()));
   res.render('index', { restaurants: results, keyword: req.query.keyword });
