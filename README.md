@@ -39,11 +39,13 @@ Fox Wu
 * 0.0.1
     * Initial project
 
+
+<!--
 ## License
 
 This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
 
-<!--
+
 ## Acknowledgments
 
 Inspiration, code snippets, etc.
