@@ -73,3 +73,11 @@ header {
     font-size: 2rem;
   }
 }
+
+input[type=text] {
+  width: 70%;
+}
+
+textarea {
+  width: 70%;
+}

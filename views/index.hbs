@@ -33,11 +33,16 @@
 
 <!-- restaurant list -->
 <div class="container mt-5">
+  <div class="row d-flex justify-content-end m-2">
+    <form action="./restaurant/new" method="GET" style="display: inline;">
+      <button type="submit">Create</button>
+    </form>
+  </div>
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
         {{#each restaurants}}
-        <a href="/restaurants/{{this.id}}"" class=" text-secondary">
+        <a href="/restaurant/{{this._id}}"" class=" text-secondary">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
             <div class="card-body p-3">

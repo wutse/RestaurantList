@@ -1,0 +1,81 @@
+<header>
+  <!-- navigation -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
+             width="30" height="30" class="d-inline-block align-top" alt="好。吃">
+        我的餐廳清單
+      </a>
+    </div>
+  </nav>
+
+  <div class="banner"></div>
+</header>
+
+<form action="/restaurant/{{ restaurant._id }}/edit" method="POST">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-10 mx-auto">
+        <p class="mb-1 mt-3 d-flex align-items-start">
+          <span class="text-secondary">
+            <i class="fas fa-utensils pr-2"></i>
+            名稱：
+          </span>
+          <input type="text" placeholder="name" name="name" value="{{ restaurant.name }}">
+        </p>
+
+        <p class="mb-1 d-flex align-items-start">
+          <span class="text-secondary">
+            <i class="fas fa-utensils pr-2"></i>
+            類別：
+          </span>
+          <input type="text" placeholder="category" name="category" value="{{ restaurant.category }}">
+        </p>
+
+        <p class="mb-1 d-flex align-items-start">
+          <span class="text-secondary">
+            <i class="fas fa-map-marker-alt pr-2"></i>
+            地址：
+          </span>
+          <input type="text" placeholder="location" name="location" value="{{ restaurant.location }}">
+        </p>
+
+        <p class="mb-1 d-flex align-items-start">
+          <span class="text-secondary">
+            <i class="fas fa-map-marker-alt pr-2"></i>
+            map：
+          </span>
+          <input type="text" placeholder="google_map" name="google_map" value="{{ restaurant.google_map }}">
+        </p>
+
+        <p class="mb-1 d-flex align-items-start">
+          <span class="text-secondary ">
+            <i class="fas fa-mobile-alt pr-2"></i>
+            電話：
+          </span>
+          <input type="text" placeholder="phone" name="phone" value="{{ restaurant.phone }}">
+        </p>
+
+        <p class="mb-1 d-flex align-items-start">
+          <span class="text-secondary ">
+            <i class="fas fa-mobile-alt pr-2"></i>
+            描述：
+          </span>
+          <textarea rows="5" name="description">{{ restaurant.description }}</textarea>
+        </p>
+
+        <p class="mb-5 d-flex align-items-start">
+          <span class="text-secondary">
+            <i class="fas fa-mobile-alt pr-2"></i>
+            圖片：
+          </span>
+          <input type="text" placeholder="image" name="image" value="{{ restaurant.image }}">
+        </p>
+      </div>
+    </div>
+    <div class="row justify-content-end  border-2 border-secondary">
+      <button type="submit">edit</button>
+    </div>
+  </div>
+</form>
