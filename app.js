@@ -84,13 +84,12 @@ app.post('/restaurant', (req, res) => {
   newData.location = req.body.location;
   newData.google_map = req.body.google_map;
   newData.phone = req.body.phone;
-  newData.description = req.body.description;
+  newData.rating = req.body.rating;
   newData.image = req.body.image;
-  newData.rating = Math.floor(Math.random() * 50) / 10;
+  newData.description = req.body.description;
 
   return newData.save()
     .then(() => res.redirect('/'));
-
 });
 
 app.post('/restaurant/:id/edit', (req, res) => {
@@ -102,8 +101,9 @@ app.post('/restaurant/:id/edit', (req, res) => {
       data.location = req.body.location;
       data.google_map = req.body.google_map;
       data.phone = req.body.phone;
-      data.description = req.body.description;
+      data.rating = req.body.rating;
       data.image = req.body.image;
+      data.description = req.body.description;
 
       return data.save();
     })

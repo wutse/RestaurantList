@@ -19,64 +19,65 @@
       <div class="col-12 col-md-10 mx-auto">
         <p class="mb-1 mt-3 d-flex align-items-start">
           <span class="text-secondary">
-            <i class="fas fa-utensils pr-2"></i>
-            名稱：
+            <i class="fas fa-utensils pr-2">名稱：</i>
           </span>
-          <input type="text" placeholder="name" name="name" value="{{ restaurant.name }}">
+          <input type="text" placeholder="name" name="name" value="{{ restaurant.name }}" required>
         </p>
 
         <p class="mb-1 d-flex align-items-start">
           <span class="text-secondary">
-            <i class="fas fa-utensils pr-2"></i>
-            類別：
+            <i class="fas fa-utensils pr-2">類別：</i>
           </span>
-          <input type="text" placeholder="category" name="category" value="{{ restaurant.category }}">
+          <input type="text" placeholder="category" name="category" value="{{ restaurant.category }}" required>
         </p>
 
         <p class="mb-1 d-flex align-items-start">
           <span class="text-secondary">
-            <i class="fas fa-map-marker-alt pr-2"></i>
-            地址：
+            <i class="fas fa-map-marker-alt pr-2">地址：</i>
           </span>
-          <input type="text" placeholder="location" name="location" value="{{ restaurant.location }}">
+          <input type="text" placeholder="location" name="location" value="{{ restaurant.location }}" required>
         </p>
 
         <p class="mb-1 d-flex align-items-start">
           <span class="text-secondary">
-            <i class="fas fa-map-marker-alt pr-2"></i>
-            map：
+            <i class="fas fa-map-marker-alt pr-2">地圖：</i>
           </span>
           <input type="text" placeholder="google_map" name="google_map" value="{{ restaurant.google_map }}">
         </p>
 
         <p class="mb-1 d-flex align-items-start">
           <span class="text-secondary ">
-            <i class="fas fa-mobile-alt pr-2"></i>
-            電話：
+            <i class="fas fa-phone-square-alt pr-2">電話：</i>
           </span>
-          <input type="text" placeholder="phone" name="phone" value="{{ restaurant.phone }}">
+          <input type="text" placeholder="phone" name="phone" value="{{ restaurant.phone }}" required>
         </p>
 
         <p class="mb-1 d-flex align-items-start">
           <span class="text-secondary ">
-            <i class="fas fa-mobile-alt pr-2"></i>
-            描述：
+            <i class="fas fa-comment-alt pr-2">評分：</i>
           </span>
-          <textarea rows="5" name="description">{{ restaurant.description }}</textarea>
+          <input type="number" step="0.1" id="rating" placeholder="rating" name="rating" value="{{ restaurant.rating }}"
+                 required>
+        </p>
+
+        <p class="mb-1 d-flex align-items-start">
+          <span class="text-secondary">
+            <i class="fas fa-image pr-2">圖片：</i>
+          </span>
+          <input type="text" placeholder="image" name="image" value="{{ restaurant.image }}">
         </p>
 
         <p class="mb-5 d-flex align-items-start">
-          <span class="text-secondary">
-            <i class="fas fa-mobile-alt pr-2"></i>
-            圖片：
+          <span class="text-secondary ">
+            <i class="fas fa-comment-dots pr-2">描述：</i>
           </span>
-          <input type="text" placeholder="image" name="image" value="{{ restaurant.image }}">
+          <textarea rows="5" name="description">{{ restaurant.description }}</textarea>
         </p>
       </div>
     </div>
     <div class="row justify-content-end  border-2 border-secondary">
       <a class="mr-3" href="/restaurant/{{ restaurant._id }}">cancel</a>
-      <button type="submit">edit</button>
+      <button id="btnSubmit" type="submit">edit</button>
     </div>
   </form>
 </div>
