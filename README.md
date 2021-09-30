@@ -21,6 +21,10 @@ An Express exercise project.
 
 * git clone https://github.com/wutse/RestaurantList.git
 
+### Create initial data
+
+* node {project folder}/models/seeds/restaurantSeeder.js
+
 ### Executing program
 
 * npm run start
@@ -36,8 +40,10 @@ Fox Wu
 
 ## Version History
 
+* 0.0.2
+    * Connect to db.
 * 0.0.1
-    * Initial project
+    * Initial project.
 
 
 <!--

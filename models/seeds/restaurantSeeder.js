@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const sourceDatas = require('./restaurant.json');
 const Restaurant = require('../restaurant');
 
-mongoose.connect('mongodb://172.22.128.1/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true }).
+mongoose.connect('mongodb://172.30.176.1/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true }).
   catch(err => console.log(err));
 
 const db = mongoose.connection;

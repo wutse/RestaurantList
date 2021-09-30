@@ -13,8 +13,8 @@
   <div class="banner"></div>
 </header>
 
-<form action="/restaurant/{{ restaurant._id }}/edit" method="POST">
-  <div class="container">
+<div class="container">
+  <form action="/restaurant/{{ restaurant._id }}/edit" method="POST">
     <div class="row">
       <div class="col-12 col-md-10 mx-auto">
         <p class="mb-1 mt-3 d-flex align-items-start">
@@ -75,7 +75,8 @@
       </div>
     </div>
     <div class="row justify-content-end  border-2 border-secondary">
+      <a class="mr-3" href="/restaurant/{{ restaurant._id }}">cancel</a>
       <button type="submit">edit</button>
     </div>
-  </div>
-</form>
+  </form>
+</div>

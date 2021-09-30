@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const Restaurant = require('./models/restaurant');
 
-mongoose.connect('mongodb://172.31.16.1/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://172.30.176.1/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
   .catch(err => console.log(err));
 
 const db = mongoose.connection;
@@ -29,6 +29,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
+  console.log(`get /`);
   Restaurant.find()
     .lean()
     .then(datas => res.render('index', { restaurants: datas }))
@@ -39,11 +40,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/restaurant/new', (req, res) => {
+  console.log(`get /restaurant/new`);
   return res.render('new')
 });
 
 app.get('/restaurant/:id', (req, res) => {
-  console.log(req.params.id);
+  console.log(`get /restaurant/${req.params.id}`);
   return Restaurant.findById(req.params.id)
     .lean()
     .then(data => res.render('detail', { restaurant: data }))
@@ -51,6 +53,7 @@ app.get('/restaurant/:id', (req, res) => {
 });
 
 app.get('/restaurant/:id/edit', (req, res) => {
+  console.log(`get /restaurant/${req.params.id}/edit`);
   return Restaurant.findById(req.params.id)
     .lean()
     .then(data => res.render('edit', { restaurant: data }))
@@ -58,11 +61,23 @@ app.get('/restaurant/:id/edit', (req, res) => {
 });
 
 app.get('/search', (req, res) => {
-  let results = restaurantList.filter(r => (r.name + r.category).toUpperCase().includes(req.query.keyword.toUpperCase()));
-  res.render('index', { restaurants: results, keyword: req.query.keyword });
+  console.log(`get /search?keyword=${req.query.keyword}`);
+  Restaurant.find({
+    $or: [
+      { name: { $regex: `.*${req.query.keyword}.*` } },
+      { name_en: { $regex: `.*${req.query.keyword}.*` } },
+      { category: { $regex: `.*${req.query.keyword}.*` } }]
+  })
+    .lean()
+    .then(datas => res.render('index', { restaurants: datas, keyword: req.query.keyword }))
+    .catch((err) => {
+      console.log('get restaurant data error!');
+      console.log(err);
+    });
 });
 
 app.post('/restaurant', (req, res) => {
+  console.log(`post /restaurant`);
   let newData = new Restaurant();
   newData.name = req.body.name;
   newData.category = req.body.category;
@@ -71,6 +86,7 @@ app.post('/restaurant', (req, res) => {
   newData.phone = req.body.phone;
   newData.description = req.body.description;
   newData.image = req.body.image;
+  newData.rating = Math.floor(Math.random() * 50) / 10;
 
   return newData.save()
     .then(() => res.redirect('/'));
@@ -78,6 +94,7 @@ app.post('/restaurant', (req, res) => {
 });
 
 app.post('/restaurant/:id/edit', (req, res) => {
+  console.log(`post /restaurant/${req.params.id}/edit`);
   return Restaurant.findById(req.params.id)
     .then(data => {
       data.name = req.body.name;
@@ -90,11 +107,12 @@ app.post('/restaurant/:id/edit', (req, res) => {
 
       return data.save();
     })
-    .then(() => res.redirect(`/restaurants/${req.params.id}`))
+    .then(() => res.redirect(`/restaurant/${req.params.id}`))
     .catch(err => console.log(err));
 });
 
 app.post('/restaurant/:id/delete', (req, res) => {
+  console.log(`post /restaurant/${req.params.id}/delete`);
   return Restaurant.findById(req.params.id)
     .then(data => data.remove())
     .then(() => res.redirect('/'))
