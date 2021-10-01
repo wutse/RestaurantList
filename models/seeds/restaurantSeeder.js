@@ -1,18 +1,8 @@
 'use strict';
 
-const mongoose = require('mongoose');
+const db = require('../../config/mongoose');
 const sourceDatas = require('./restaurant.json');
 const Restaurant = require('../restaurant');
-
-mongoose.connect('mongodb://172.30.176.1/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true }).
-  catch(err => console.log(err));
-
-const db = mongoose.connection;
-
-db.on('error', (err) => {
-  console.log('db error!');
-  console.log(err);
-});
 
 db.once('open', () => {
   console.log('db connected!');
@@ -23,4 +13,3 @@ db.once('open', () => {
 
   console.log('done');
 });
-
