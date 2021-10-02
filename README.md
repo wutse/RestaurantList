@@ -20,6 +20,7 @@ An Express exercise project.
 ### Installing
 
 * git clone https://github.com/wutse/RestaurantList.git
+* adjust database ip in {project folder}/config/mongoose.js
 
 ### Create initial data
 
